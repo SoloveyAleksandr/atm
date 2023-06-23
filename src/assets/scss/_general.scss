@@ -14,6 +14,14 @@ button {
   background-color: transparent;
 }
 
+a {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  color: inherit;
+  font-family: inherit;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -26,4 +34,56 @@ button {
   max-width: 167rem;
   margin: 0 auto;
   padding: 0 1.5rem;
+}
+
+.block-title {
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 120%;
+
+  @include breakpoint($sm-bp) {
+    font-size: 2.2rem;
+  }
+}
+
+.swiper-btns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &__btn {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.3rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background-color: $blue;
+
+    &:hover {
+      background-color: rgba(55, 56, 154, 1);
+    }
+
+    &:focus {
+      background-color: rgba(40, 41, 116, 1);
+    }
+
+    &._disabled {
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    &:first-child {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      fill: $white;
+    }
+  }
 }

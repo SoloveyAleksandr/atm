@@ -46,4 +46,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
     new Menu(MENU, HEADER, menuBtn);
   }
+
+  const mainTopSphere = document.querySelector(".main-top-sphere");
+  if (mainTopSphere) {
+    const pathList = mainTopSphere.querySelectorAll("path");
+
+    const TL = gsap.timeline({
+      repeat: -1,
+    });
+
+    pathList.forEach((path, i) => {
+      TL.to(path, {
+        stroke: "rgba(54, 169, 225, 1)",
+        y: "1rem",
+        repeat: -1,
+        yoyo: true,
+        duration: 2,
+        delay: i * 0.8,
+        ease: "none",
+      }, "sin")
+    })
+  }
+
+  const mainNews = document.querySelector(".main-news");
+  if (mainNews) {
+    const swiper = mainNews.querySelector(".main-news__swiper");
+    const prewBtn = mainNews.querySelector(".swiper-btns__btn_prev");
+    const nextBtn = mainNews.querySelector(".swiper-btns__btn_next");
+
+    new Swiper(swiper, {
+      enabled: false,
+      navigation: {
+        nextEl: nextBtn,
+        prevEl: prewBtn,
+        disabledClass: "_disabled",
+      },
+      breakpoints: {
+        1025: {
+          slidesPerView: 4,
+        },
+        501: {
+          slidesPerView: 2,
+          enabled: true,
+        }
+      }
+    })
+  }
+
 })
