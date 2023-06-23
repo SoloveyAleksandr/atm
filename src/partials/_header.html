@@ -1,0 +1,62 @@
+<header class="header">
+
+  <div class="container header__container">
+
+    <a href="#" class="header__logo">
+      <img src="./assets/images/logo_dark.svg" alt="logo">
+    </a>
+
+    <div class="header-nav">
+      <a href="#" class="header-nav__link">Работнику</a>
+      <a href="#" class="header-nav__link">Работодателю</a>
+      <a href="#" class="header-nav__link">Новости</a>
+      <a href="#" class="header-nav__link">Контакты</a>
+    </div>
+
+    <a href="#" class="header__icon-btn">
+      <svg>
+        <use href="#phone-icon"></use>
+      </svg>
+      Обратная связь
+    </a>
+
+    <div class="header-menu">
+      <a href="#" class="header__icon-btn">
+        <svg>
+          <use href="#login-icon"></use>
+        </svg>
+        Личный кабинет
+      </a>
+
+      <div class="header-menu-lang">
+        <button type="button" class="header-menu-lang-btn">
+          <span class="header-menu-lang-btn__flag">
+            <svg>
+              <use href="#flag-ru-icon"></use>
+            </svg>
+          </span>
+          <span class="header-menu-lang-btn__text">
+            RU
+          </span>
+          <svg class="header-menu-lang-btn__arrow">
+            <use href="#arrow-icon"></use>
+          </svg>
+        </button>
+      </div>
+
+      <button type="button" class="header-menu__btn">
+        МЕНЮ
+        <svg>
+          <use href="#menu-burger-icon"></use>
+        </svg>
+        <svg>
+          <use href="#menu-close-icon"></use>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+
+  {{> _menu }}
+
+</header>
