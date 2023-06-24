@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       breakpoints: {
         1025: {
           slidesPerView: 4,
+          enabled: true,
         },
         501: {
           slidesPerView: 2,
@@ -93,4 +94,30 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
+  const mainPartners = document.querySelector(".main-partners");
+  if (mainPartners) {
+    const swiper = mainPartners.querySelector(".main-partners__swiper");
+    const prewBtn = mainPartners.querySelector(".swiper-btns__btn_prev");
+    const nextBtn = mainPartners.querySelector(".swiper-btns__btn_next");
+
+    new Swiper(swiper, {
+      slidesPerView: 2,
+      enabled: false,
+      navigation: {
+        nextEl: nextBtn,
+        prevEl: prewBtn,
+        disabledClass: "_disabled",
+      },
+      breakpoints: {
+        1025: {
+          slidesPerView: 4,
+          enabled: true,
+        },
+        501: {
+          slidesPerView: 2,
+          enabled: true,
+        }
+      }
+    })
+  }
 })

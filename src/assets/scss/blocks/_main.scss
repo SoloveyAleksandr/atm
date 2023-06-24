@@ -435,16 +435,19 @@
 
   &-help {
     display: grid;
+    grid-template-columns: repeat(6, 1fr);
     column-gap: 4rem;
     margin-bottom: 20rem;
 
     @include breakpoint($xl-bp) {
       display: flex;
       flex-direction: column;
+      gap: 4rem;
     }
 
     @include breakpoint($sm-bp) {
       gap: 2rem;
+      margin-bottom: 8rem;
     }
 
     &__title {
@@ -461,7 +464,6 @@
 
       @include breakpoint($xl-bp) {
         padding: 4rem 0rem;
-        margin-bottom: 16rem;
       }
 
       @include breakpoint($sm-bp) {
@@ -478,12 +480,9 @@
 
       @include breakpoint($xl-bp) {
         border: 0.1rem solid $blue;
-        border-bottom: none;
-        border-top-left-radius: 4rem;
-        border-top-right-radius: 4rem;
-        padding-bottom: 8rem;
-        margin-top: -8rem;
-        transition: 0.3s;
+        padding: 2rem;
+        margin: 0;
+        gap: 2rem;
       }
 
       @include breakpoint($sm-bp) {
@@ -493,10 +492,6 @@
       }
 
       &:hover {
-        @include breakpoint($xl-bp) {
-          transform: translateY(-4rem);
-        }
-
         .main-help-item__title {
           transform: translateX(0.5em);
           color: $blue_light;
@@ -514,9 +509,13 @@
         border-top-left-radius: 4rem;
         border-top-right-radius: 4rem;
 
-        @include breakpoint($sm-bp) {
+        @include breakpoint($xl-bp) {
           border: 0.1rem solid $blue;
           border-radius: 4rem;
+        }
+
+        @include breakpoint($sm-bp) {
+          border-radius: 2rem;
         }
       }
 
@@ -527,9 +526,13 @@
         border-top-left-radius: 4rem;
         border-top-right-radius: 4rem;
 
-        @include breakpoint($sm-bp) {
+        @include breakpoint($xl-bp) {
           border: 0.1rem solid $blue;
           border-radius: 4rem;
+        }
+
+        @include breakpoint($sm-bp) {
+          border-radius: 2rem;
         }
       }
 
@@ -541,16 +544,12 @@
         border-bottom-right-radius: 4rem;
 
         @include breakpoint($xl-bp) {
-          border-radius: 0;
           border: 0.1rem solid $blue;
-          border-bottom: none;
-          border-top-left-radius: 4rem;
-          border-top-right-radius: 4rem;
+          border-radius: 4rem;
+        }
 
-          @include breakpoint($sm-bp) {
-            border: 0.1rem solid $blue;
-            border-radius: 4rem;
-          }
+        @include breakpoint($sm-bp) {
+          border-radius: 2rem;
         }
       }
 
@@ -562,16 +561,12 @@
         border-bottom-right-radius: 4rem;
 
         @include breakpoint($xl-bp) {
-          border-radius: 0;
           border: 0.1rem solid $blue;
-          border-bottom: none;
-          border-top-left-radius: 4rem;
-          border-top-right-radius: 4rem;
+          border-radius: 4rem;
         }
 
         @include breakpoint($sm-bp) {
-          border: 0.1rem solid $blue;
-          border-radius: 4rem;
+          border-radius: 2rem;
         }
       }
 
@@ -583,16 +578,12 @@
         border-bottom-right-radius: 4rem;
 
         @include breakpoint($xl-bp) {
-          border-radius: 0;
           border: 0.1rem solid $blue;
-          border-bottom: none;
-          border-top-left-radius: 4rem;
-          border-top-right-radius: 4rem;
+          border-radius: 4rem;
         }
 
         @include breakpoint($sm-bp) {
-          border: 0.1rem solid $blue;
-          border-radius: 4rem;
+          border-radius: 2rem;
         }
       }
 
@@ -622,6 +613,205 @@
         @include breakpoint($sm-bp) {
           font-size: 1.2rem;
         }
+      }
+    }
+
+    &.main-help_2 {
+      .main-help-item {
+        &:nth-child(4) {
+          grid-area: 3/1/4/4;
+        }
+
+        &:nth-child(5) {
+          grid-area: 3/4/4/7;
+        }
+      }
+    }
+  }
+
+  &-video {
+    position: relative;
+    border-radius: 4rem;
+    height: 90rem;
+    overflow: hidden;
+    margin-bottom: 20rem;
+
+    @include breakpoint($xl-bp) {
+      height: 60rem;
+      border-radius: 2rem;
+    }
+
+    @include breakpoint($sm-bp) {
+      height: fit-content;
+      margin-bottom: 8rem;
+    }
+
+    &__img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &:hover {
+      .main-video__container {
+        backdrop-filter: blur(0rem);
+      }
+
+      .main-video__link {
+        background-color: $white;
+        color: $blue;
+
+        .main-top-btn__icon {
+          background-color: $blue;
+        }
+      }
+    }
+
+    &__container {
+      position: relative;
+      z-index: 2;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 8rem;
+      background: rgba(27, 27, 30, 0.4);
+      backdrop-filter: blur(1rem);
+      transition: 0.5s;
+
+      @include breakpoint($xl-bp) {
+        padding: 2rem;
+        gap: 4rem;
+      }
+    }
+
+    &__title {
+      font-size: 6.2rem;
+      font-weight: 700;
+      line-height: 120%;
+      color: $white;
+      max-width: 86rem;
+
+      @include breakpoint($sm-bp) {
+        font-size: 2.8rem;
+      }
+    }
+
+    &__inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      @include breakpoint($sm-bp) {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+      }
+    }
+
+    &__text {
+      font-size: 1.6rem;
+      color: $white;
+      @include text;
+      max-width: 58rem;
+
+      @include breakpoint($sm-bp) {
+        font-size: 1.2rem;
+      }
+    }
+
+    &__link {
+      background: rgba(255, 255, 255, 0.2);
+
+      @include breakpoint($sm-bp) {
+        width: 100%;
+      }
+
+      .main-top-btn__icon {
+        background-color: transparent;
+        transition: 0.3s;
+
+        svg {
+          fill: $white;
+        }
+      }
+    }
+  }
+
+  &-partners {
+    margin-bottom: 20rem;
+    overflow: hidden;
+
+    @include breakpoint($sm-bp) {
+      margin-bottom: 8rem;
+    }
+
+    &__head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 4rem;
+
+      @include breakpoint($sm-bp) {
+        margin-bottom: 2rem;
+      }
+
+      .swiper-btns {
+        @include breakpoint($sm-bp) {
+          display: none;
+        }
+      }
+    }
+
+    &__swiper {
+      width: calc(100% + 4rem);
+
+      @include breakpoint($sm-bp) {
+        width: calc(100% + 2rem);
+      }
+
+      .swiper-slide {
+        padding-right: 4rem;
+
+        @include breakpoint($sm-bp) {
+          padding-right: 2rem;
+        }
+      }
+
+      .swiper-wrapper {
+        @include breakpoint($sm-bp) {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          row-gap: 2rem;
+        }
+      }
+    }
+
+    &__item {
+      height: 24rem;
+      padding: 6rem;
+      border-radius: 2rem;
+      background-color: rgba(233, 240, 253, 1);
+
+      @include breakpoint($sm-bp) {
+        padding: 2rem;
+        height: 8rem;
+      }
+
+      img {
+        object-fit: contain;
+        object-position: center;
+        width: 100%;
+        height: 100%;
       }
     }
   }
