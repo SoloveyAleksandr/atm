@@ -87,3 +87,59 @@ a {
     }
   }
 }
+
+.page-title {
+  font-size: 4.4rem;
+  font-weight: 700;
+  line-height: 120%;
+
+  @include breakpoint($sm-bp) {
+    font-size: 2.8rem;
+  }
+}
+
+.page-nav {
+  margin: 8rem 0rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  @include breakpoint($sm-bp) {
+    margin: 4rem 0rem 3rem;
+    gap: 1rem;
+  }
+
+  &__link {
+    font-size: 1.6rem;
+    color: $black;
+    pointer-events: none;
+
+    @include breakpoint($sm-bp) {
+      font-size: 1.2rem;
+    }
+
+    &:not(:last-child) {
+      pointer-events: all;
+      color: $grey;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      transition: 0.3s;
+
+      @include breakpoint($sm-bp) {
+        gap: 1rem;
+      }
+
+      &:hover {
+        color: $blue;
+      }
+
+      &::after {
+        content: ">";
+        color: inherit;
+      }
+    }
+  }
+}

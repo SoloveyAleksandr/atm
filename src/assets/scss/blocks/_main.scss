@@ -703,6 +703,14 @@
           font-size: 1.2rem;
         }
       }
+
+      &__text {
+        font-size: 1.6rem;
+
+        @include breakpoint($sm-bp) {
+          font-size: 1.2rem;
+        }
+      }
     }
 
     &.main-help_2 {
