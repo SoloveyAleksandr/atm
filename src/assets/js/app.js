@@ -38,6 +38,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  class CentersInfo {
+    constructor(container, template) {
+      this.container = container;
+      this.template = template;
+      this.title = this.template.content.querySelector(".centers-info__title");
+      this.img = this.template.content.querySelector(".centers-info__img img");
+      this.link = this.template.content.querySelector(".centers-info__link");
+      this.contactsList = this.template.content.querySelector(".centers-info-contacts__list");
+      this.map = this.template.content.querySelector(".centers-info__map iframe");
+
+      // if (this.container && this.template && this.title && this.img && this.link && this.contactsList && this.map) {
+      //   this.init();
+      // }
+    }
+
+    // init() {
+
+    // }
+
+    setInfo(infoItem) {
+      const title = infoItem.querySelector(".centers-nav-item__title");
+      const titleText = title && title.innerText;
+      const img = infoItem.querySelector(".centers-nav-item__img img");
+      const imgSrc = img && img.getAttribute("src");
+      const link = infoItem.querySelector(".centers-info__link");
+      const linkText = link && link.innerText;
+      const linkUrl = link && link.getAttribute("href");
+      const mapSrc = infoItem.querySelector(".centers-info__map-src");
+      const contactsList = infoItem.querySelectorAll(".centers-info-contacts__item");
+
+      titleText && (this.title.innerText = titleText);
+      imgSrc && (this.img.setAttribute("src", imgSrc));
+      linkText && (this.link.innerText = linkText);
+      linkText && (this.link.setAttribute("href", linkUrl));
+      this.contactsList.innerHtml = "";
+      contactsList.forEach(item => this.contactsList.appendChild(item));
+      mapSrc && this.map.setAttribute("src", mapSrc);
+
+      const fragment = this.template.cloneNode(true);
+      this.container.innerHtml = "";
+      this.container.appendChild(fragment.content);
+    }
+  }
+
   const HEADER = document.querySelector(".header");
   const MENU = document.querySelector(".menu");
 
@@ -251,5 +295,41 @@ document.addEventListener("DOMContentLoaded", () => {
         yoyo: true,
       }, "-=1.5")
     })
+  }
+
+  const centers = document.querySelector(".centers");
+  if (centers) {
+    const navContainer = centers.querySelector(".centers-nav");
+    const navNextBtn = centers.querySelector(".swiper-btns__btn_next");
+    const navPrevBtn = centers.querySelector(".swiper-btns__btn_prev");
+
+    const centersInfoContainer = centers.querySelector(".centers-info");
+    const centersInfoTemplate = centers.querySelector(".centers-info__template");
+
+    if (navContainer && navNextBtn && navPrevBtn && centersInfoContainer && centersInfoTemplate) {
+      const infoController = new CentersInfo(centersInfoContainer, centersInfoTemplate);
+      const navSwiper = new Swiper(navContainer, {
+        navigation: {
+          nextEl: navNextBtn,
+          prevEl: navPrevBtn,
+          disabledClass: "_disabled",
+        },
+        breakpoints: {
+          1025: {
+            slidesPerView: 4,
+            enabled: true,
+          },
+          501: {
+            slidesPerView: 2,
+            enabled: true,
+          }
+        },
+        on: {
+          init: (swiper) => {
+            infoController.setInfo(swiper.slides[0]);
+          }
+        }
+      });
+    }
   }
 })
