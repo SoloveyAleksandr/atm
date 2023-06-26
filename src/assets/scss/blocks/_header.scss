@@ -23,6 +23,10 @@
     }
   }
 
+  &._hidden {
+    transform: translateY(-100%);
+  }
+
   @include breakpoint($sm-bp) {
     padding: 1.5rem 0;
   }

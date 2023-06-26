@@ -47,26 +47,29 @@ document.addEventListener("DOMContentLoaded", () => {
     new Menu(MENU, HEADER, menuBtn);
   }
 
-  // const mainTopSphere = document.querySelector(".main-top-sphere");
-  // if (mainTopSphere) {
-  //   const pathList = mainTopSphere.querySelectorAll("path");
 
-  //   const TL = gsap.timeline({
-  //     repeat: -1,
-  //   });
+  const headerController = headerHandler();
 
-  //   pathList.forEach((path, i) => {
-  //     TL.to(path, {
-  //       stroke: "rgba(54, 169, 225, 1)",
-  //       y: "1rem",
-  //       repeat: -1,
-  //       yoyo: true,
-  //       duration: 2,
-  //       delay: i * 0.8,
-  //       ease: "none",
-  //     }, "sin")
-  //   })
-  // }
+  function headerHandler() {
+    let prewScroll = window.scrollY;
+
+    return () => {
+      if (window.scrollY > 300 && !HEADER.classList.contains("_active-menu")) {
+        if (window.scrollY > prewScroll) {
+          HEADER.classList.add("_hidden");
+        } else {
+          HEADER.classList.remove("_hidden");
+        }
+      } else {
+        HEADER.classList.remove("_hidden");
+      }
+      prewScroll = window.scrollY;
+      console.log(prewScroll);
+    }
+  }
+
+  window.addEventListener("scroll", headerController);
+
 
   const mainTop = document.querySelector(".main-top");
   if (mainTop) {
@@ -192,11 +195,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const mainPartners = document.querySelector(".main-partners");
   if (mainPartners) {
-    const swiper = mainPartners.querySelector(".main-partners__swiper");
+    const swiperContainer = mainPartners.querySelector(".main-partners__swiper");
     const prewBtn = mainPartners.querySelector(".swiper-btns__btn_prev");
     const nextBtn = mainPartners.querySelector(".swiper-btns__btn_next");
 
-    new Swiper(swiper, {
+    const swiper = new Swiper(swiperContainer, {
       slidesPerView: 2,
       enabled: false,
       navigation: {
@@ -215,5 +218,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     })
+
+    if (window.matchMedia("(min-width: 1025px)").matches) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: mainPartners,
+          start: "50% bottom",
+        }
+      });
+
+      swiper.slides.forEach(slide => {
+        tl.from(slide, {
+          x: "100vw",
+          duration: 0.8,
+        }, "-=0.4")
+      });
+    }
   }
 })
