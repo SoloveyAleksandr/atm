@@ -47,34 +47,114 @@ document.addEventListener("DOMContentLoaded", () => {
     new Menu(MENU, HEADER, menuBtn);
   }
 
-  const mainTopSphere = document.querySelector(".main-top-sphere");
-  if (mainTopSphere) {
-    const pathList = mainTopSphere.querySelectorAll("path");
+  // const mainTopSphere = document.querySelector(".main-top-sphere");
+  // if (mainTopSphere) {
+  //   const pathList = mainTopSphere.querySelectorAll("path");
 
-    const TL = gsap.timeline({
-      repeat: -1,
+  //   const TL = gsap.timeline({
+  //     repeat: -1,
+  //   });
+
+  //   pathList.forEach((path, i) => {
+  //     TL.to(path, {
+  //       stroke: "rgba(54, 169, 225, 1)",
+  //       y: "1rem",
+  //       repeat: -1,
+  //       yoyo: true,
+  //       duration: 2,
+  //       delay: i * 0.8,
+  //       ease: "none",
+  //     }, "sin")
+  //   })
+  // }
+
+  const mainTop = document.querySelector(".main-top");
+  if (mainTop) {
+    const mainInner = mainTop.querySelector(".main-top__inner");
+    const sphere = mainTop.querySelector(".main-top-sphere__inner");
+    const tg = mainTop.querySelector(".main-top-tg");
+
+    const tl = gsap.timeline();
+    tl.to(sphere, {
+      height: "100%",
+      top: "0%",
+      duration: 2,
     });
 
-    pathList.forEach((path, i) => {
-      TL.to(path, {
-        stroke: "rgba(54, 169, 225, 1)",
-        y: "1rem",
-        repeat: -1,
-        yoyo: true,
-        duration: 2,
-        delay: i * 0.8,
-        ease: "none",
-      }, "sin")
+    tl.to(sphere, {
+      rotateZ: 15,
+      duration: 2,
+    });
+
+    tl.to(sphere, {
+      height: "90%",
+      top: "5%",
+      duration: 1,
+      ease: "elastic.out(1.2, 0.3)",
+    }, "-=2");
+
+    tl.to(sphere, {
+      height: "100%",
+      top: "0%",
+      duration: 3,
+      ease: "elastic.out(1.5, 0.3)",
+    }, "-=1.8");
+
+    tl.to(mainInner, {
+      opacity: 1,
+      duration: 2,
+    }, "-=1");
+
+    tl.to(tg, {
+      opacity: 1,
+      duration: 2,
+    }, "-=2");
+
+    // tl.to(sphere, {
+    //   height: "100%",
+    //   top: "0%",
+    //   duration: 1,
+    //   ease: "elastic.out(1, 0.3)",
+    // }, "sin");
+  }
+
+  const mainOffice = document.querySelector(".main-office");
+  if (mainOffice && window.matchMedia("(min-width: 1025px)").matches) {
+    const list = mainOffice.querySelectorAll(".main-office__list");
+    const items = mainOffice.querySelectorAll(".main-office-item");
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: mainOffice,
+        start: "50% bottom",
+      }
+    });
+
+    tl.from(list, {
+      height: 0,
+      duration: 0,
+    });
+
+    items.forEach(item => {
+      const img = item.querySelector(".main-office-item__img");
+      tl.from(item, {
+        height: "fit-content",
+        duration: 1,
+      }, "sin");
+
+      tl.from(img, {
+        height: 0,
+        duration: 1,
+      }, "sin");
     })
   }
 
   const mainNews = document.querySelector(".main-news");
   if (mainNews) {
-    const swiper = mainNews.querySelector(".main-news__swiper");
+    const swiperContainer = mainNews.querySelector(".main-news__swiper");
     const prewBtn = mainNews.querySelector(".swiper-btns__btn_prev");
     const nextBtn = mainNews.querySelector(".swiper-btns__btn_next");
 
-    new Swiper(swiper, {
+    const swiper = new Swiper(swiperContainer, {
       enabled: false,
       navigation: {
         nextEl: nextBtn,
@@ -92,6 +172,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     })
+
+    if (window.matchMedia("(min-width: 1025px)").matches) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: mainNews,
+          start: "50% bottom",
+        }
+      });
+
+      swiper.slides.forEach(slide => {
+        tl.from(slide, {
+          x: "100vw",
+          duration: 0.8,
+        }, "-=0.4")
+      });
+    }
   }
 
   const mainPartners = document.querySelector(".main-partners");
