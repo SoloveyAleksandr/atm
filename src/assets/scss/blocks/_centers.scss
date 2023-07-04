@@ -6,11 +6,27 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 4rem;
+
+    @include breakpoint($sm-bp) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3rem;
+      margin-bottom: 3rem;
+
+      .swiper-btns {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
   }
 
   &-nav {
     width: calc(100% + 4rem);
     margin-bottom: 6rem;
+
+    @include breakpoint($sm-bp) {
+      margin-bottom: 3rem;
+    }
 
     .swiper-wrapper {
       align-items: stretch;
@@ -20,7 +36,7 @@
       padding-right: 4rem;
       height: auto;
 
-      &._active {
+      &.swiper-slide-thumb-active {
         .centers-nav-item {
           border-color: $blue;
         }
@@ -36,6 +52,7 @@
       flex-direction: column;
       border: 0.1rem solid transparent;
       transition: 0.3s;
+      cursor: pointer;
 
       &__img {
         width: 100%;
@@ -66,89 +83,152 @@
   }
 
   &-info {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4rem;
     margin-bottom: 20rem;
 
-    &__map {
-      width: 100%;
-      height: 72rem;
-      border-radius: 2rem;
-      overflow: hidden;
+    @include breakpoint($sm-bp) {
+      margin-bottom: 8rem;
     }
 
-    &__container {
-      display: flex;
-      flex-direction: column;
-    }
-
-    &__inner {
+    &-item {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 4rem;
-      padding-bottom: 4rem;
-      margin-bottom: 4rem;
-      border-bottom: 0.1rem solid $blue;
-    }
 
-    &__img {
-      width: 100%;
-      height: 25rem;
+      @include breakpoint($xl-bp) {
+        display: flex;
+        flex-direction: column;
+      }
 
-      img {
-        object-fit: cover;
-        object-position: center;
+      @include breakpoint($sm-bp) {
+        gap: 3rem;
+      }
+
+      &__map {
         width: 100%;
-        height: 100%;
-      }
-    }
+        height: 72rem;
+        border-radius: 2rem;
+        overflow: hidden;
 
-    &__content {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.5rem;
-    }
-
-    &__title {
-      font-size: 3.4rem;
-      font-weight: 700;
-      line-height: 120%;
-      color: $blue;
-    }
-
-    &__link {
-      font-size: 1.6rem;
-      text-decoration-line: underline;
-      color: $blue;
-    }
-
-    &-contacts {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-
-      &__title {
-        font-size: 1.6rem;
-        font-weight: 700;
-        color: $blue;
+        @include breakpoint($sm-bp) {
+          height: 52rem;
+        }
       }
 
-      &__list {
+      &__container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__inner {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        column-gap: 4rem;
-        row-gap: 5rem;
+        gap: 4rem;
+        padding-bottom: 4rem;
+        margin-bottom: 4rem;
+        border-bottom: 0.1rem solid $blue;
+
+        @include breakpoint($sm-bp) {
+          display: flex;
+          flex-direction: column-reverse;
+          gap: 3rem;
+          padding-bottom: 3rem;
+          margin-bottom: 3rem;
+        }
       }
 
-      &__item {
+      &__img {
+        width: 100%;
+        height: 25rem;
+        border-radius: 2rem;
+        overflow: hidden;
+
+        @include breakpoint($sm-bp) {
+          height: 18rem;
+        }
+
+        img {
+          object-fit: cover;
+          object-position: center;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      &__content {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 1rem;
+        gap: 1.5rem;
+
+        @include breakpoint($sm-bp) {
+          gap: 1rem;
+        }
+      }
+
+      &__title {
+        font-size: 3.4rem;
+        font-weight: 700;
+        line-height: 120%;
+        color: $blue;
+
+        @include breakpoint($sm-bp) {
+          font-size: 2.2rem;
+          line-height: 120%;
+        }
+      }
+
+      &__link {
         font-size: 1.6rem;
-        @include text;
+        text-decoration-line: underline;
+        color: $blue;
+
+        @include breakpoint($sm-bp) {
+          font-size: 1.2rem;
+          line-height: normal;
+        }
+      }
+
+      &-contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        &__title {
+          font-size: 1.6rem;
+          font-weight: 700;
+          color: $blue;
+
+          @include breakpoint($sm-bp) {
+            font-size: 1.2rem;
+            line-height: normal;
+          }
+        }
+
+        &__list {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 4rem;
+          row-gap: 5rem;
+
+          @include breakpoint($sm-bp) {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+
+        &__item {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+          font-size: 1.6rem;
+          @include text;
+
+          @include breakpoint($sm-bp) {
+            font-size: 1.2rem;
+            line-height: normal;
+          }
+        }
       }
     }
   }

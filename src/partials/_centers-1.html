@@ -26,123 +26,180 @@
     </div>
 
     <div class="swiper centers-nav">
+      <template class="centers-nav-template">
+        <div class="swiper-slide">
+          <div class="centers-nav-item">
+            <div class="centers-nav-item__img">
+              <img src="" alt="">
+            </div>
+            <h4 class="centers-nav-item__title"></h4>
+            <p class="centers-nav-item__text"></p>
+          </div>
+        </div>
+      </template>
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="centers-nav-item">
-            <div class="centers-nav-item__img">
-              <img src="./assets/images/main-office-1.jpg" alt="">
-            </div>
-            <h4 class="centers-nav-item__title">Миграционный центр «Северный»</h4>
-            <p class="centers-nav-item__text">Санкт-Петербург г, Якорная ул, дом №7, литера А</p>
-            <template>
-              <a href="#" class="centers-info__link">https://clinic-ladya.ru/</a>
-              <span class="centers-info__map-src">
-                https://yandex.ru/map-widget/v1/?um=constructor%3A19a0672ff560e2f3070ee94d896cdd083af504628d7547c14b934fcc81328434&amp;source=constructor
-              </span>
-              <div class="centers-info-contacts__item">
-                <p>Санкт-Петербург г, Якорная ул, дом №7, литера А</p>
-                <p>Тел.: 8 (812) 455-36-96</p>
-                <p>Режим работы: пн-пт с 10:00 до 20:00</p>
-              </div>
-            </template>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="centers-nav-item">
-            <div class="centers-nav-item__img">
-              <img src="./assets/images/main-office-2.jpg" alt="">
-            </div>
-            <h4 class="centers-nav-item__title">Миграционный центр «Южный»</h4>
-            <p class="centers-nav-item__text">г. Санкт-Петербург г, Кубинская ул., д.77</p>
-            <template>
-              <a href="#" class="centers-info__link">https://clinic-ladya.ru/</a>
-              <span class="centers-info__map-src">
-                https://yandex.ru/map-widget/v1/?um=constructor%3A19a0672ff560e2f3070ee94d896cdd083af504628d7547c14b934fcc81328434&amp;source=constructor
-              </span>
-              <div class="centers-info-contacts__item">
-                <p>г. Санкт-Петербург г, Кубинская ул., д.77</p>
-                <p>Тел.: 8 (812) 455-36-96</p>
-                <p>Режим работы: пн-пт с 10:00 до 20:00</p>
-              </div>
-            </template>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="centers-nav-item">
-            <div class="centers-nav-item__img">
-              <img src="./assets/images/main-office-3.jpg" alt="">
-            </div>
-            <h4 class="centers-nav-item__title">Миграционный центр «Московский»</h4>
-            <p class="centers-nav-item__text">Санкт-Петербург, ул. Коли Томчака, 28Б</p>
-            <template>
-              <a href="#" class="centers-info__link">https://clinic-ladya.ru/</a>
-              <span class="centers-info__map-src">
-                https://yandex.ru/map-widget/v1/?um=constructor%3A19a0672ff560e2f3070ee94d896cdd083af504628d7547c14b934fcc81328434&amp;source=constructor
-              </span>
-              <div class="centers-info-contacts__item">
-                <p>Санкт-Петербург, ул. Коли Томчака, 28Б</p>
-                <p>Тел.: 8 (812) 455-36-96</p>
-                <p>Режим работы: пн-пт с 10:00 до 20:00</p>
-              </div>
-            </template>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="centers-nav-item">
-            <div class="centers-nav-item__img">
-              <img src="./assets/images/main-office-4.jpg" alt="">
-            </div>
-            <h4 class="centers-nav-item__title">Миграционный центр «Нарвский»</h4>
-            <p class="centers-nav-item__text">Санкт-Петербург, Межевой канал, д.1, лит.А</p>
-            <template>
-              <a href="#" class="centers-info__link">https://clinic-ladya.ru/</a>
-              <span class="centers-info__map-src">
-                https://yandex.ru/map-widget/v1/?um=constructor%3A19a0672ff560e2f3070ee94d896cdd083af504628d7547c14b934fcc81328434&amp;source=constructor
-              </span>
-              <div class="centers-info-contacts__item">
-                <p>Санкт-Петербург, Межевой канал, д.1, лит.А</p>
-                <p>Тел.: 8 (812) 455-36-96</p>
-                <p>Режим работы: пн-пт с 10:00 до 20:00</p>
-              </div>
-            </template>
-          </div>
-        </div>
+
       </div>
     </div>
 
-    <div class="centers-info">
-      <template class="centers-info__template">
-        <div class="centers-info__container">
-          <div class="centers-info__inner">
-            <div class="centers-info__img">
-              <img src="" alt="">
+    <div class="swiper centers-info">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="centers-info-item" data-address="Санкт-Петербург г, Якорная ул, дом №7, литера А">
+            <div class="centers-info-item__container">
+              <div class="centers-info-item__inner">
+                <div class="centers-info-item__img">
+                  <img src="./assets/images/main-office-1.jpg" alt="">
+                </div>
+
+                <div class="centers-info-item__content">
+                  <h4 class="centers-info-item__title">
+                    Миграционный центр «Северный»
+                  </h4>
+
+                  <a href="#" class="centers-info-item__link">
+                    https://clinic-ladya.ru/
+                  </a>
+                </div>
+              </div>
+
+              <div class="centers-info-item-contacts">
+                <h3 class="centers-info-item-contacts__title">Контактные данные центра</h3>
+
+                <div class="centers-info-item-contacts__list">
+                  <div class="centers-info-item-contacts__item">
+                    <p>Санкт-Петербург г, Якорная ул, дом №7, литера А</p>
+                    <p>Тел.: 8 (812) 455-36-96</p>
+                    <p>Режим работы: пн-пт с 10:00 до 20:00</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="centers-info__content">
-              <h4 class="centers-info__title">
-              </h4>
-
-              <a href="#" class="centers-info__link"></a>
-            </div>
-          </div>
-
-          <div class="centers-info-contacts">
-            <h3 class="centers-info-contacts__title">Контактные данные центра</h3>
-
-            <div class="centers-info-contacts__list">
-              <!-- <div class="centers-info-contacts__item">
-                <p>Санкт-Петербург г, Якорная ул, дом №7, литера А</p>
-                <p>Тел.: 8 (812) 455-36-96</p>
-                <p>Режим работы: пн-пт с 10:00 до 20:00</p>
-              </div> -->
+            <div class="centers-info-item__map">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A19a0672ff560e2f3070ee94d896cdd083af504628d7547c14b934fcc81328434&amp;source=constructor"
+                width="100%" height="100%" frameborder="0"></iframe>
             </div>
           </div>
         </div>
+        <div class="swiper-slide">
+          <div class="centers-info-item" data-address="г. Санкт-Петербург г, Кубинская ул., д.77">
+            <div class="centers-info-item__container">
+              <div class="centers-info-item__inner">
+                <div class="centers-info-item__img">
+                  <img src="./assets/images/main-office-2.jpg" alt="">
+                </div>
 
-        <div class="centers-info__map">
-          <iframe src="" width="100%" height="100%" frameborder="0"></iframe>
+                <div class="centers-info-item__content">
+                  <h4 class="centers-info-item__title">
+                    Миграционный центр «Южный»
+                  </h4>
+
+                  <a href="#" class="centers-info-item__link">
+                  </a>
+                </div>
+              </div>
+
+              <div class="centers-info-item-contacts">
+                <h3 class="centers-info-item-contacts__title">Контактные данные центра</h3>
+
+                <div class="centers-info-item-contacts__list">
+                  <div class="centers-info-item-contacts__item">
+                    <p>г. Санкт-Петербург г, Кубинская ул., д.77</p>
+                    <p>Тел.: 8 (812) 455-36-96</p>
+                    <p>Режим работы: пн-пт с 10:00 до 20:00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="centers-info-item__map">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A19a0672ff560e2f3070ee94d896cdd083af504628d7547c14b934fcc81328434&amp;source=constructor"
+                width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+          </div>
         </div>
-      </template>
+        <div class="swiper-slide">
+          <div class="centers-info-item" data-address="Санкт-Петербург, ул. Коли Томчака, 28Б">
+            <div class="centers-info-item__container">
+              <div class="centers-info-item__inner">
+                <div class="centers-info-item__img">
+                  <img src="./assets/images/main-office-3.jpg" alt="">
+                </div>
+
+                <div class="centers-info-item__content">
+                  <h4 class="centers-info-item__title">
+                    Миграционный центр «Московский»
+                  </h4>
+
+                  <a href="#" class="centers-info-item__link">
+                    https://clinic-ladya.ru/
+                  </a>
+                </div>
+              </div>
+
+              <div class="centers-info-item-contacts">
+                <h3 class="centers-info-item-contacts__title">Контактные данные центра</h3>
+
+                <div class="centers-info-item-contacts__list">
+                  <div class="centers-info-item-contacts__item">
+                    <p>Санкт-Петербург, ул. Коли Томчака, 28Б</p>
+                    <p>Тел.: 8 (812) 455-36-96</p>
+                    <p>Режим работы: пн-пт с 10:00 до 20:00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="centers-info-item__map">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A19a0672ff560e2f3070ee94d896cdd083af504628d7547c14b934fcc81328434&amp;source=constructor"
+                width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="centers-info-item" data-address="Санкт-Петербург, Межевой канал, д.1, лит.А">
+            <div class="centers-info-item__container">
+              <div class="centers-info-item__inner">
+                <div class="centers-info-item__img">
+                  <img src="./assets/images/main-office-4.jpg" alt="">
+                </div>
+
+                <div class="centers-info-item__content">
+                  <h4 class="centers-info-item__title">
+                    Миграционный центр «Нарвский»
+                  </h4>
+
+                  <a href="#" class="centers-info-item__link">
+                    https://clinic-ladya.ru/
+                  </a>
+                </div>
+              </div>
+
+              <div class="centers-info-item-contacts">
+                <h3 class="centers-info-item-contacts__title">Контактные данные центра</h3>
+
+                <div class="centers-info-item-contacts__list">
+                  <div class="centers-info-item-contacts__item">
+                    <p>Санкт-Петербург, Межевой канал, д.1, лит.А</p>
+                    <p>Тел.: 8 (812) 455-36-96</p>
+                    <p>Режим работы: пн-пт с 10:00 до 20:00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="centers-info-item__map">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A19a0672ff560e2f3070ee94d896cdd083af504628d7547c14b934fcc81328434&amp;source=constructor"
+                width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
