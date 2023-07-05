@@ -1,0 +1,76 @@
+.docs {
+  margin-bottom: 20rem;
+
+  @include breakpoint($sm-bp) {
+    margin-bottom: 8rem;
+  }
+
+  &__title {
+    margin-bottom: 6rem;
+
+    @include breakpoint($sm-bp) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 4rem;
+
+    @include breakpoint($xl-bp) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    height: 100%;
+    padding: 2rem 0rem;
+    border-bottom: 0.1rem solid $blue;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: normal;
+    color: $blue;
+    transition: 0.5s;
+
+    @include breakpoint($sm-bp) {
+      font-size: 1.2rem;
+    }
+
+    &:hover {
+      color: $blue_light;
+
+      svg {
+        transform: scale(1.1);
+      }
+    }
+
+    svg {
+      width: 8rem;
+      height: 8rem;
+      flex: none;
+      transition: 0.5s;
+
+      @include breakpoint($sm-bp) {
+        width: 4rem;
+        height: 4rem;
+      }
+    }
+
+    &:nth-child(1) {
+      border-top: 0.1rem solid $blue;
+    }
+
+    &:nth-child(2) {
+      border-top: 0.1rem solid $blue;
+
+      @include breakpoint($xl-bp) {
+        border-top: none;
+      }
+    }
+  }
+}
