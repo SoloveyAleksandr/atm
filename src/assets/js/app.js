@@ -38,6 +38,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  class FilterItem {
+    constructor(container) {
+      this.container = container;
+      this.input = this.container.querySelector("input[type=checkbox]");
+
+      if (this.container && this.input) this.init();
+    }
+
+    init() {
+      this.input.addEventListener("input", this.checkHandler.bind(this));
+
+      this.checkHandler();
+    }
+
+    checkHandler() {
+      if (this.input.checked) {
+        this.container.classList.add("_checked");
+      } else {
+        this.container.classList.remove("_checked");
+      }
+    }
+  }
+
   const HEADER = document.querySelector(".header");
   const MENU = document.querySelector(".menu");
 
@@ -314,5 +337,12 @@ document.addEventListener("DOMContentLoaded", () => {
         swiper: navSwiper,
       },
     });
+  }
+
+  const eventsFilter = document.querySelector(".events-filter");
+  if (eventsFilter) {
+    const items = eventsFilter.querySelectorAll(".events-filter__item");
+
+    items.forEach(item => new FilterItem(item));
   }
 })
