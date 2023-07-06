@@ -1,0 +1,121 @@
+.news {
+  margin-bottom: 15.1rem;
+
+  @include breakpoint($sm-bp) {
+    margin-bottom: 8rem;
+  }
+
+  &__title {
+    margin-bottom: 6rem;
+
+    @include breakpoint($sm-bp) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    margin-bottom: 6rem;
+
+    @include breakpoint($sm-bp) {
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__text {
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    @include text;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  &__img {
+    width: 100%;
+    height: 76.5rem;
+
+    img {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include breakpoint($sm-bp) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    &-link {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-size: 1.6rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      color: $blue;
+      transition: 0.3s;
+
+      &:nth-child(1) {
+        @include breakpoint($sm-bp) {
+          margin-right: auto;
+        }
+
+        .news-nav-link__icon {
+          transform: rotate(180deg);
+        }
+
+        &:hover {
+          .news-nav-link__icon {
+            transform: rotate(180deg) translateX(0.5rem);
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        flex-direction: row-reverse;
+
+        @include breakpoint($sm-bp) {
+          margin-left: auto;
+        }
+
+        &:hover {
+          .news-nav-link__icon {
+            transform: translateX(0.5rem);
+          }
+        }
+      }
+
+      &__icon {
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 50%;
+        background-color: $blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+
+        svg {
+          width: 1.2rem;
+          height: 1.2rem;
+          fill: $white;
+        }
+      }
+    }
+  }
+}
