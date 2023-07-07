@@ -61,6 +61,68 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  class QuestionItem {
+    constructor(container, controller) {
+      this.container = container;
+      this.btn = this.container.querySelector(".questions-item__btn");
+      this.content = this.container.querySelector(".questions-item__content");
+      this.maxHeight = null;
+      this.isOpen = true;
+      this.controller = controller;
+
+      if (this.container && this.btn && this.content) {
+        this.init();
+      }
+    }
+
+    init() {
+      this.maxHeight = this.content.offsetHeight * 2 + "px";
+      this.close();
+
+      if (this.controller) {
+        this.controller.items.push(this);
+        this.btn.addEventListener("click", () => {
+          if (this.isOpen) {
+            this.close();
+          } else {
+            this.controller.setActive(this);
+          }
+        });
+      }
+
+    }
+
+    open() {
+      this.isOpen = true;
+      this.container.classList.remove("_close");
+      this.content.style.maxHeight = this.maxHeight;
+    }
+
+    close() {
+      this.isOpen = false;
+      this.container.classList.add("_close");
+      this.content.style.maxHeight = 0;
+    }
+  }
+
+  class QuestionsController {
+    constructor(swiper) {
+      this.swiper = swiper;
+      this.items = [];
+    }
+
+    setActive(currentItem) {
+      this.items.forEach((item, index) => {
+        if (currentItem === item) {
+          item.open();
+          this.swiper.slideTo(index);
+        } else {
+          item.close();
+        }
+      })
+    }
+  }
+
   const HEADER = document.querySelector(".header");
   const MENU = document.querySelector(".menu");
 
@@ -344,5 +406,46 @@ document.addEventListener("DOMContentLoaded", () => {
     const items = eventsFilter.querySelectorAll(".events-filter__item");
 
     items.forEach(item => new FilterItem(item));
+  }
+
+  const questions = document.querySelector(".questions");
+  if (questions) {
+    const questionItems = questions.querySelectorAll(".questions-item");
+    const swiperContainer = questions.querySelector(".questions-swiper");
+
+    const swiper = new Swiper(swiperContainer, {
+      spaceBetween: 100,
+      speed: 500,
+      autoHeight: true,
+      effect: "creative",
+      creativeEffect: {
+        prev: {
+          translate: [0, "-100%", -200],
+          opacity: 0,
+        },
+        next: {
+          translate: [0, "100%", -200],
+          opacity: 0,
+        },
+      }
+    });
+
+    const questionsController = new QuestionsController(swiper);
+
+    questionItems.forEach(item => {
+      const newItem = new QuestionItem(item, questionsController);
+
+      const newSlide = document.createElement("div");
+      newSlide.className = "swiper-slide questions-swiper-slide";
+      newSlide.innerHTML = `
+        <h3 class="questions-swiper-slide__title">${newItem.btn.textContent}</h3>
+        <div class="questions-swiper-slide__text">${newItem.content.innerHTML}</div>
+      `;
+
+      swiper.appendSlide(newSlide);
+    });
+
+    questionsController.setActive(questionsController.items[0]);
+
   }
 })
