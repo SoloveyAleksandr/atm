@@ -414,6 +414,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const swiperContainer = questions.querySelector(".questions-swiper");
 
     const swiper = new Swiper(swiperContainer, {
+      allowTouchMove: false,
       spaceBetween: 100,
       speed: 500,
       autoHeight: true,

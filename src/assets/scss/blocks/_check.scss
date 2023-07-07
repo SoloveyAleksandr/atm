@@ -1,0 +1,95 @@
+.check {
+  margin-bottom: 20rem;
+
+  @include breakpoint($sm-bp) {
+    margin-bottom: 8rem;
+  }
+
+  &__title {
+    margin-bottom: 6rem;
+
+    @include breakpoint($sm-bp) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 3.9rem;
+    border-radius: 2rem;
+    border: 0.1rem solid $blue;
+
+    @include breakpoint($sm-bp) {
+      padding: 1.9rem;
+      gap: 2rem;
+    }
+
+    &__title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: normal;
+
+      @include breakpoint($sm-bp) {
+        font-size: 1.2rem;
+      }
+    }
+
+    &__container {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 6rem;
+
+      @include breakpoint($sm-bp) {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+
+    &__inner {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+
+      @include breakpoint($xl-bp) {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @include breakpoint($sm-bp) {
+        gap: 1.5rem;
+      }
+    }
+
+    &__input {
+      width: 100%;
+      padding: 1.5rem 2rem;
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: normal;
+      border-radius: 5rem;
+      border: 0.1rem solid $blue;
+
+      @include breakpoint($sm-bp) {
+        padding: 1.3rem 2rem;
+        font-size: 1.2rem;
+      }
+
+      &::placeholder {
+        color: $grey;
+      }
+    }
+
+    &__btn {
+      margin-top: auto;
+      height: fit-content;
+
+      @include breakpoint($sm-bp) {
+        width: 100%;
+      }
+    }
+  }
+}
