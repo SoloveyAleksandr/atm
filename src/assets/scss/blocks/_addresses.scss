@@ -1,0 +1,107 @@
+.addresses {
+  margin-bottom: 20rem;
+
+  @include breakpoint($sm-bp) {
+    margin-bottom: 8rem;
+  }
+
+  &__title {
+    margin-bottom: 6rem;
+
+    @include breakpoint($sm-bp) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4rem;
+
+    @include breakpoint($xl-bp) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint($sm-bp) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &-item {
+    padding: 2rem;
+    border-radius: 2rem;
+    background-color: rgba(233, 240, 253, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include breakpoint($sm-bp) {
+      gap: 1.5rem;
+    }
+
+    &__title {
+      min-height: 8.3rem;
+      border-bottom: 0.1rem solid $blue;
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: normal;
+
+      @include breakpoint($sm-bp) {
+        min-height: unset;
+        padding-bottom: 1.4rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    &__info {
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: normal;
+      @include text;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      @include breakpoint($sm-bp) {
+        font-size: 1.2rem;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+
+        &:not(:last-child) {
+          margin-bottom: 0.5rem;
+
+          @include breakpoint($sm-bp) {
+            margin: 0;
+          }
+        }
+      }
+
+      h1 {
+        font-size: 1.4em;
+      }
+
+      h2 {
+        font-size: 1.2em;
+      }
+
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: 1em;
+      }
+
+      a {
+        color: $blue;
+      }
+    }
+  }
+}
