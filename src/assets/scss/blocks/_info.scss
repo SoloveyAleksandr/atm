@@ -26,6 +26,15 @@
       grid-template-columns: 1fr;
       gap: 2rem;
     }
+
+    &.info__list_min {
+      grid-template-columns: repeat(2, 1fr);
+
+      @include breakpoint($sm-bp) {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
   }
 
   &-item {
