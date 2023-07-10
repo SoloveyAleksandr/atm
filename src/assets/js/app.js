@@ -526,7 +526,7 @@ document.addEventListener("DOMContentLoaded", () => {
       new VacancyItem(item, controller);
       // const clone = item.cloneNode(true);
 
-      if (i < items.length / 2) {
+      if (i < Math.round(items.length / 2)) {
         box_1.appendChild(item);
       } else {
         box_2.appendChild(item);
