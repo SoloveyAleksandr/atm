@@ -124,10 +124,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   class VacancyItem {
-    constructor(container, controller) {
+    constructor(container, controller, props) {
       this.container = container;
-      this.btn = this.container.querySelector(".vacancy-item__btn");
-      this.content = this.container.querySelector(".vacancy-item__description");
+      this.btn = props ? this.container.querySelector(props.btn) : this.container.querySelector(".vacancy-item__btn");
+      this.content = props ? this.container.querySelector(props.content) : this.container.querySelector(".vacancy-item__description");
       this.maxHeight = null;
       this.isOpen = true;
       this.controller = controller;
@@ -524,6 +524,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     items.forEach((item, i) => {
       new VacancyItem(item, controller);
+      // const clone = item.cloneNode(true);
+
+      if (i < Math.round(items.length / 2)) {
+        box_1.appendChild(item);
+      } else {
+        box_2.appendChild(item);
+      }
+    });
+
+    fragment.appendChild(box_1);
+    fragment.appendChild(box_2);
+    itemsContainer.innerHTML = "";
+    itemsContainer.appendChild(fragment);
+  }
+
+  const payment = document.querySelector(".payment");
+  if (payment) {
+    const controller = new VacancyController();
+
+    const itemsContainer = payment.querySelector(".payment__container");
+    const items = payment.querySelectorAll(".payment-item");
+
+    const box_1 = document.createElement("div");
+    box_1.className = "payment__box";
+    const box_2 = box_1.cloneNode(true);
+    const fragment = document.createDocumentFragment();
+
+    items.forEach((item, i) => {
+      new VacancyItem(item, controller, {
+        btn: ".payment-item__btn",
+        content: ".payment-item-info",
+      });
       // const clone = item.cloneNode(true);
 
       if (i < Math.round(items.length / 2)) {
