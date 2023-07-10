@@ -123,6 +123,66 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  class VacancyItem {
+    constructor(container, controller) {
+      this.container = container;
+      this.btn = this.container.querySelector(".vacancy-item__btn");
+      this.content = this.container.querySelector(".vacancy-item__description");
+      this.maxHeight = null;
+      this.isOpen = true;
+      this.controller = controller;
+
+      if (this.container && this.btn && this.content) {
+        this.init();
+      }
+    }
+
+    init() {
+      this.maxHeight = this.content.offsetHeight * 2 + "px";
+      this.close();
+
+      if (this.controller) {
+        this.controller.items.push(this);
+        this.btn.addEventListener("click", () => {
+          if (this.isOpen) {
+            this.close();
+          } else {
+            this.controller.setActive(this);
+          }
+        });
+      }
+
+    }
+
+    open() {
+      this.isOpen = true;
+      this.container.classList.remove("_close");
+      this.content.style.maxHeight = this.maxHeight;
+    }
+
+    close() {
+      this.isOpen = false;
+      this.container.classList.add("_close");
+      this.content.style.maxHeight = 0;
+    }
+  }
+
+  class VacancyController {
+    constructor() {
+      this.items = [];
+    }
+
+    setActive(currentItem) {
+      this.items.forEach(item => {
+        if (currentItem === item) {
+          item.open();
+        } else {
+          item.close();
+        }
+      })
+    }
+  }
+
   const HEADER = document.querySelector(".header");
   const MENU = document.querySelector(".menu");
 
@@ -448,5 +508,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     questionsController.setActive(questionsController.items[0]);
 
+  }
+
+  const vacancy = document.querySelector(".vacancy");
+  if (vacancy) {
+    const controller = new VacancyController();
+
+    const itemsContainer = vacancy.querySelector(".vacancy__container");
+    const items = vacancy.querySelectorAll(".vacancy-item");
+
+    const box_1 = document.createElement("div");
+    box_1.className = "vacancy__box";
+    const box_2 = box_1.cloneNode(true);
+    const fragment = document.createDocumentFragment();
+
+    items.forEach((item, i) => {
+      new VacancyItem(item, controller);
+      // const clone = item.cloneNode(true);
+
+      if (i < items.length / 2) {
+        box_1.appendChild(item);
+      } else {
+        box_2.appendChild(item);
+      }
+    });
+
+    fragment.appendChild(box_1);
+    fragment.appendChild(box_2);
+    itemsContainer.innerHTML = "";
+    itemsContainer.appendChild(fragment);
   }
 })
