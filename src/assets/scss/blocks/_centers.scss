@@ -3,8 +3,8 @@
 
   &__head {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 4rem;
     margin-bottom: 4rem;
 
     @include breakpoint($sm-bp) {
@@ -18,6 +18,26 @@
         justify-content: space-between;
       }
     }
+  }
+
+  &-map {
+    width: 100%;
+    height: 96rem;
+
+    @include breakpoint($sm-bp) {
+      height: unset;
+    }
+
+    img {
+      object-fit: contain;
+      object-position: left center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__btns {
+    margin-left: auto;
   }
 
   &-nav {

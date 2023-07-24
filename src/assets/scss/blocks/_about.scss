@@ -102,6 +102,7 @@
       font-size: 3.4rem;
       font-weight: 700;
       line-height: 120%;
+      color: $blue;
       text-align: center;
 
       @include breakpoint($sm-bp) {
