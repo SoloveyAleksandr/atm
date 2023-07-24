@@ -39,7 +39,7 @@
 
   &__logo {
     flex: none;
-    height: 9.5rem;
+    height: 11.4rem;
 
     @include breakpoint($xl-bp) {
       height: 6rem;
@@ -68,6 +68,7 @@
 
     &__link {
       font-size: 2rem;
+      font-weight: 700;
       color: $black;
       transition: 0.3s;
 
@@ -82,6 +83,7 @@
     align-items: center;
     gap: 1rem;
     font-size: 2rem;
+    font-weight: 700;
     color: $blue;
     transition: 0.3s;
 
@@ -136,6 +138,7 @@
 
         &__text {
           font-size: 2rem;
+          font-weight: 700;
 
           @include breakpoint($sm-bp) {
             font-size: 1.2rem;
@@ -157,6 +160,7 @@
       align-items: center;
       gap: 1rem;
       font-size: 2rem;
+      font-weight: 700;
       text-transform: uppercase;
       position: relative;
       padding-right: 3.4rem;

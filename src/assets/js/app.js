@@ -65,8 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
     constructor(container, controller) {
       this.container = container;
       this.btn = this.container.querySelector(".questions-item__btn");
-      this.content = this.container.querySelector(".questions-item__content");
-      this.maxHeight = null;
+      this.content = this.container.querySelector(".questions-item__text");
+      // this.maxHeight = null;
       this.isOpen = true;
       this.controller = controller;
 
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     init() {
-      this.maxHeight = this.content.offsetHeight * 2 + "px";
+      // this.maxHeight = this.content.offsetHeight * 2 + "px";
       this.close();
 
       if (this.controller) {
@@ -94,14 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     open() {
       this.isOpen = true;
-      this.container.classList.remove("_close");
-      this.content.style.maxHeight = this.maxHeight;
+      this.container.classList.add("_active");
+      // this.content.style.maxHeight = this.maxHeight;
     }
 
     close() {
       this.isOpen = false;
-      this.container.classList.add("_close");
-      this.content.style.maxHeight = 0;
+      this.container.classList.remove("_active");
+      // this.content.style.maxHeight = 0;
     }
   }
 
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tl.to(sphere, {
       height: "100%",
       top: "0%",
-      duration: 2,
+      duration: 1,
     });
 
     tl.to(sphere, {
@@ -242,14 +242,14 @@ document.addEventListener("DOMContentLoaded", () => {
     tl.to(sphere, {
       height: "100%",
       top: "0%",
-      duration: 3,
+      duration: 2,
       ease: "elastic.out(1.5, 0.3)",
     }, "-=1.8");
 
     tl.to(mainInner, {
       opacity: 1,
       duration: 2,
-    }, "-=1");
+    }, "-=2");
 
     tl.to(tg, {
       opacity: 1,

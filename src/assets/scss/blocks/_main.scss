@@ -269,13 +269,15 @@
   &-office {
     padding: 14rem 0rem;
     background-color: rgba(233, 240, 253, 1);
-    background: url(../images/main-office-bg.png) center / auto calc(100% - 16rem) no-repeat,
+    background:
+      url(../images/main-office-bg.png) center / auto calc(100% - 16rem) no-repeat,
       linear-gradient(rgba(233, 240, 253, 1), rgba(233, 240, 253, 1));
     margin-bottom: 20rem;
 
     @include breakpoint($sm-bp) {
       padding: 8rem 0rem;
-      background: url(../images/main-office-bg.png) center / auto 100% repeat-y,
+      background:
+        url(../images/main-office-bg.png) center / auto 100% repeat-y,
         linear-gradient(rgba(233, 240, 253, 1), rgba(233, 240, 253, 1));
       margin-bottom: 8rem;
     }
@@ -446,6 +448,15 @@
       padding: 4rem;
       border-radius: 2rem;
       background-color: rgba(233, 240, 253, 1);
+      transition: box-shadow 0.3s ease-in-out;
+
+      &:hover {
+        box-shadow: 0 0 1rem rgba(45, 46, 131, 0.15) inset;
+
+        .main-news-item__title {
+          color: $blue_light;
+        }
+      }
 
       @include breakpoint($sm-bp) {
         padding: 2rem;
@@ -468,6 +479,7 @@
         font-weight: 700;
         color: $blue;
         margin-bottom: 2rem;
+        transition: 0.3s ease-in-out;
 
         @include breakpoint($sm-bp) {
           font-size: 1.2rem;
